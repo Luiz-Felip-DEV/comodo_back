@@ -36,7 +36,10 @@ class UserUtils {
     {
         const arrReturn = await UserRepository.verifyEmail(email);
 
-        const verify = (arrReturn) ? true : false;
+        // console.log(arrReturn);
+        // return;
+
+        const verify = (arrReturn[0]) ? true : false;
 
         return verify;
     }

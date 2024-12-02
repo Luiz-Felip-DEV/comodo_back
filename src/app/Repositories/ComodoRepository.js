@@ -16,6 +16,35 @@ class ComodoRepository {
         })
     }
 
+    getComodos(id)
+    {
+        const sql = "SELECT id, name FROM comodo where user_id = ?";
+    
+        return new Promise((resolve, reject) => {
+            conexao.query(sql,id,(error, result) => {
+                if (error) return reject(false);
+
+                const row = JSON.parse(JSON.stringify(result));
+                return resolve(row);
+            })
+        })
+    }
+
+    async deleteComodo(id)
+    {
+        const sql = 'DELETE FROM comodo WHERE id = ?';
+
+        return new Promise((resolve, reject) => {
+            conexao.query(sql,id,(error, result) => {
+                if (error) return reject(false);
+
+                const row = JSON.parse(JSON.stringify(result));
+
+                return resolve(row);
+            });
+        });
+    }
+
 }
 
 export default new ComodoRepository();

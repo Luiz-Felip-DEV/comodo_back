@@ -8,16 +8,19 @@ import Jwt from "./app/Utils/JwtUtils.js";
 const router  = Router();
 
 //GET
-
+router.get('/comodos', Jwt.checkToken, ComodoController.getComodos);
 
 //POST
 router.post('/user', UserRequest.postUser, UserController.postUser);
 router.post('/login', UserRequest.postLogin, UserController.login);
+router.post('/comodo', Jwt.checkToken, ComodoRequest.postComodo, ComodoController.postComodo);
+
 
 //PUT
 
 
 //DELETE
+router.delete('/comodo', Jwt.checkToken, ComodoRequest.deleteComodo, ComodoController.deleteComodo);
 
 
 

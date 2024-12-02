@@ -2,7 +2,7 @@ import UserUtils from "../Utils/UserUtils.js";
 
 class UserRequest {
 
-    postUser(req, res, next)
+    async postUser(req, res, next)
     {
         let msg = '';
 
@@ -18,11 +18,11 @@ class UserRequest {
             msg = 'Parametro password é obrigatorio.';
         }
 
-        if (!UserUtils.emailValido(req.body.email)) {
+        if (req.body.email && !UserUtils.emailValido(req.body.email)) {
             msg = 'Email invalido.';
         }
 
-        if (UserUtils.verifyEmail(req.body.email)) {
+        if (req.body.email && await UserUtils.verifyEmail(req.body.email)) {
             msg = 'Esse email ja está cadastrado na base de dados.';
         }
 
@@ -41,15 +41,15 @@ class UserRequest {
     {
         let msg = '';
 
-        if (!req.body.email) {
-            msg = 'Parametro email é obrigatorio.';
-        }
-
         if (!req.body.password) {
             msg = 'Parametro password é obrigatorio.';
         }
 
-        if (!UserUtils.emailValido(req.body.email)) {
+        if (!req.body.email) {
+            msg = 'Parametro email é obrigatorio.';
+        }
+
+        if (req.body.email && !UserUtils.emailValido(req.body.email)) {
             msg = 'Email invalido.';
         }
 

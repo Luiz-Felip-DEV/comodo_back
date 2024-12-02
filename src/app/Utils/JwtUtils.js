@@ -1,4 +1,6 @@
 import jwt from 'jsonwebtoken';
+import 'dotenv/config';
+
 class Jwt {
 
     checkToken(req, res, next) {
@@ -39,14 +41,13 @@ class Jwt {
     }
 
 
-    getIdFromToken(req, secret) 
+    getIdFromToken(req) 
     {
         const authHeader = req.headers['authorization'];
         const token      = authHeader && authHeader.split(" ")[1];
 
-        
         try {
-            const decoded = jwt.verify(token, secret); // Valida e decodifica o token
+            const decoded = jwt.verify(token, process.env.SECRET); // Valida e decodifica o token
             return decoded.id; // Retorna o campo 'id' do payload
         } catch (err) {
             console.error('Erro ao verificar token:', err.message);
