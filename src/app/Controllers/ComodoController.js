@@ -77,6 +77,35 @@ class ComodoController {
             msgOriginal: null
         });
     }
+
+    async putComodo(req, res)
+    {
+        const id   = req.query.id;
+        const name = req.body.name;
+        let verify = false;
+
+
+        try {
+            const arrReturn = await ComodoRepository.putComodo(id, name);
+            verify          = (arrReturn.affectedRows != 1) ? true : false;
+        }catch($e){
+
+        } 
+
+        if (verify) {
+            return res.status(400).json({
+                error: true,
+                msgUser: "Comodo nao encontrado.",
+                msgOriginal: "Comodo nao encontrado."
+            });
+        }
+    
+        return res.status(200).json({
+            error: false,
+            msgUser: 'Comodo atualizado com sucesso.',
+            msgOriginal: null
+        });
+    }
 }
 
 

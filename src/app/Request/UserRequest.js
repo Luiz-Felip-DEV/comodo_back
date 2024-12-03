@@ -6,16 +6,16 @@ class UserRequest {
     {
         let msg = '';
 
-        if (!req.body.name) {
-            msg = 'Parametro name é obrigatorio.';
+        if (!req.body.password) {
+            msg = 'Parametro password é obrigatorio.';
         }
 
         if (!req.body.email) {
             msg = 'Parametro email é obrigatorio.';
         }
 
-        if (!req.body.password) {
-            msg = 'Parametro password é obrigatorio.';
+        if (!req.body.name) {
+            msg = 'Parametro name é obrigatorio.';
         }
 
         if (req.body.email && !UserUtils.emailValido(req.body.email)) {

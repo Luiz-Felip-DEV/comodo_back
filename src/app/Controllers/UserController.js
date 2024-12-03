@@ -1,13 +1,14 @@
 import UserRepository from "../Repositories/UserRepository.js";
 import UserUtils from "../Utils/UserUtils.js";
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 import 'dotenv/config';
 
 class UserController {
 
     async postUser(req, res)
     {
-        req.body.name = UserUtils.formatarNome(req.body.name);
+        req.body.name      = UserUtils.formatarNome(req.body.name);
 
         try {
             await UserRepository.postUser(req.body);
@@ -32,6 +33,14 @@ class UserController {
         const password = req.body.password
         let arrDados   = [];
         let verify     = false;
+
+        // const hashPassword = await UserRepository.getPassword(email);
+
+        // // console.log(await bcrypt.hash(req.body.password, 10));
+        // // console.log(hashPassword[0].password);
+
+        // // console.log(await bcrypt.compare(String(password), String(hashPassword[0].password)));
+        // // return;
 
         arrDados = await UserRepository.login(email, password);
 

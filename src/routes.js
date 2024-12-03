@@ -17,12 +17,11 @@ router.post('/comodo', Jwt.checkToken, ComodoRequest.postComodo, ComodoControlle
 
 
 //PUT
+router.put('/comodo', Jwt.checkToken, ComodoRequest.putComodo, ComodoController.putComodo);
 
 
 //DELETE
 router.delete('/comodo', Jwt.checkToken, ComodoRequest.deleteComodo, ComodoController.deleteComodo);
-
-
 
 
 router.use((req, res) => {res.status(404).json({error: true,msgUser: "Rota não encontrada.",msgOriginal: "Rota não encontrada." })});
