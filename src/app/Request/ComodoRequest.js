@@ -5,8 +5,16 @@ class ComodoRequest {
     {
         let msg = '';
 
-        if (!req.body.name) {
-            msg = 'Parametro name é obrigatorio.';
+        if (!req.body.type_convenient) {
+            msg = 'Parametro type_convenient é obrigatorio.';
+        }
+
+        if (!req.body.local) {
+            msg = 'Parametro local é obrigatorio.';
+        }
+
+        if (!req.body.convenient_name) {
+            msg = 'Parametro convenient_name é obrigatorio.';
         }
 
         if(msg) {
@@ -48,8 +56,8 @@ class ComodoRequest {
             msg = 'Parametro id é obrigatorio.';
         }
 
-        if (!req.body.name) {
-            msg = 'Parametro name é obrigatorio.';
+        if (!req.body.convenient_name) {
+            msg = 'Parametro convenient_name é obrigatorio.';
         }
 
         if(msg) {

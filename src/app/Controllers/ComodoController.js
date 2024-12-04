@@ -81,7 +81,7 @@ class ComodoController {
     async putComodo(req, res)
     {
         const id   = req.query.id;
-        const name = req.body.name;
+        const name = req.body.convenient_name;
         let verify = false;
 
 

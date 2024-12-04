@@ -18,7 +18,7 @@ class ComodoRepository {
 
     getComodos(id)
     {
-        const sql = "SELECT id, name FROM comodo where user_id = ?";
+        const sql = "SELECT id, convenient_name, local, type_convenient FROM comodo where user_id = ?";
     
         return new Promise((resolve, reject) => {
             conexao.query(sql,id,(error, result) => {
@@ -47,7 +47,7 @@ class ComodoRepository {
 
     async putComodo(id, name)
     {   
-        const sql = 'UPDATE comodo SET name = ? WHERE id = ?';
+        const sql = 'UPDATE comodo SET convenient_name = ? WHERE id = ?';
 
         return new Promise((resolve, reject) => {
             conexao.query(sql,[name, id],(error, result) => {

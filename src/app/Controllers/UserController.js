@@ -34,14 +34,6 @@ class UserController {
         let arrDados   = [];
         let verify     = false;
 
-        // const hashPassword = await UserRepository.getPassword(email);
-
-        // // console.log(await bcrypt.hash(req.body.password, 10));
-        // // console.log(hashPassword[0].password);
-
-        // // console.log(await bcrypt.compare(String(password), String(hashPassword[0].password)));
-        // // return;
-
         arrDados = await UserRepository.login(email, password);
 
         try {
