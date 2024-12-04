@@ -3,12 +3,14 @@ import ComodoController from "./app/Controllers/ComodoController.js";
 import ComodoRequest from "./app/Request/ComodoRequest.js";
 import UserController from "./app/Controllers/UserController.js";
 import UserRequest from "./app/Request/UserRequest.js";
+import LocalController from "./app/Controllers/LocalController.js";
 import Jwt from "./app/Utils/JwtUtils.js";
 
 const router  = Router();
 
 //GET
 router.get('/comodos', Jwt.checkToken, ComodoController.getComodos);
+router.get('/local', Jwt.checkToken, LocalController.getsLocal);
 
 //POST
 router.post('/user', UserRequest.postUser, UserController.postUser);
