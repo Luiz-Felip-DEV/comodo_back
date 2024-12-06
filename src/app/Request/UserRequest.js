@@ -14,6 +14,10 @@ class UserRequest {
             msg = 'Parametro email é obrigatorio.';
         }
 
+        if (!req.body.age) {
+            msg = 'Parametro age é obrigatorio.';
+        }
+
         if (!req.body.name) {
             msg = 'Parametro name é obrigatorio.';
         }
